@@ -5,7 +5,11 @@ export const contacts = (state = [], action) => {
 		case 'ADD_CONTACT':
 			return [...state, {
 				id: action.id,
-				name: action.name,
+				firstName: action.firstName,
+				lastName: action.lastName,
+				email: action.email,
+				gender: action.gender,
+				phone: action.phone,
 				selected: false
 			}]
 		case 'TOGGLE_CONTACT':
@@ -15,13 +19,20 @@ export const contacts = (state = [], action) => {
 				}
 				return {
 					...contact,
-					selected: !contact.selecfted
+					selected: !contact.selected
 				};
 			});
 		default:
 			return state;
 	}
 };
+
+export const newContact = (state = {}, action) => {
+	// switch (action.type) {
+	// 	case: ''
+	// }
+	return state;
+}
 
 export const contactsIsLoading = (state = false, action) => {
 	switch (action.type) {
