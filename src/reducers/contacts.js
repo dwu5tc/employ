@@ -27,13 +27,6 @@ export const contacts = (state = [], action) => {
 	}
 };
 
-export const newContact = (state = {}, action) => {
-	// switch (action.type) {
-	// 	case: ''
-	// }
-	return state;
-}
-
 export const contactsIsLoading = (state = false, action) => {
 	switch (action.type) {
 		case 'CONTACTS_IS_LOADING':
@@ -41,5 +34,14 @@ export const contactsIsLoading = (state = false, action) => {
 		default:
 			return state;
 	}
-}
+};
+
+// export const newContact = (state = {}, action) => {
+// 	// switch (action.type) {
+// 	// 	case: ''
+// 	// }
+// 	return state;
+// }
+
+
 

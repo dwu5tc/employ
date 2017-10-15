@@ -5,23 +5,18 @@ const ADD_CONTACT = 'ADD_CONTACT';
 const TOGGLE_CONTACT = 'TOGGLE_CONTACT';
 const SET_FILTER = 'SET_FILTER';
 
+export const contactsIsLoading = (bool) => ({
+	type: CONTACTS_IS_LOADING,
+	isLoading: bool
+});
 
-export const contactsIsLoading = (bool) => {
-	return {
-		type: CONTACTS_IS_LOADING,
-		isLoading: bool
-	};
-};
-
-export const contactsFetchDataSuccess = (contacts) => {
-	return {
-		type: CONTACTS_FETCH_DATA_SUCCESS,
-		contacts
-	};
-};
+export const contactsFetchDataSuccess = (contacts) => ({
+	type: CONTACTS_FETCH_DATA_SUCCESS,
+	contacts
+});
 
 export const contactsFetchData = (url) => {
-	return dispatch => {
+	dispatch => {
 		dispatch(contactsIsLoading(true));
 
 		fetch(url)
@@ -41,32 +36,24 @@ export const contactsFetchData = (url) => {
 				dispatch(contactsFetchDataSuccess(contacts))
 			});
 	}
-}
+};
 
-export const contactIsCreating = (bool) => {
-	return {
-		type: CONTACT_IS_CREATING,
-		isCreating: bool
-	}
-}
+export const contactIsCreating = (bool) => ({
+	type: CONTACT_IS_CREATING,
+	isCreating: bool
+});
 
-export const addContact = (contact) => {
-	return {
-		type: ADD_CONTACT,
-		contact
-	}
-}
+export const addContact = (contact) => ({
+	type: ADD_CONTACT,
+	contact
+});
 
-export const toggleContact = (id) => {
-	return {
-		type: TOGGLE_CONTACT,
-		id
-	}
-}
+export const toggleContact = (id) => ({
+	type: TOGGLE_CONTACT,
+	id
+});
 
-export const setFilter = (filter) => {
-	return {
-		type: SET_FILTER,
-		filter
-	}
-}
+export const setFilter = (filter) => ({
+	type: SET_FILTER,
+	filter
+});
