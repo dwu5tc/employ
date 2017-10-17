@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	onContactClick: toggleContact,
-	fetchData: contactsFetchData
+	fetchData: (url) => dispatch(contactsFetchData(url))
 });
 
 const ContactListContainer = connect(mapStateToProps, mapDispatchToProps)(ContactList);

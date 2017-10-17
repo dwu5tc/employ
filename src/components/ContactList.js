@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { contactsFetchData } from '../actions';
+// import { contactsFetchData } from '../actions';
 import Contact from './Contact'
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,7 @@ export default class ContactList extends Component {
 		console.log(typeof this.props.isLoading);
 		console.log(typeof this.props.onContactClick);
 		this.props.fetchData('https://gist.githubusercontent.com/amsul/a1efaa7ce7b7c2bae9dc3f2d87d28195/raw/ccc4d12e50b5603c4f6ea00c389e81fb9b353dc3/contacts.json');
+		console.log("fetched data");
 	}
 
 	render() {

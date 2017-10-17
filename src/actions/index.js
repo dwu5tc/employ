@@ -16,24 +16,31 @@ export const contactsFetchDataSuccess = (contacts) => ({
 });
 
 export const contactsFetchData = (url) => {
-	dispatch => {
-		dispatch(contactsIsLoading(true));
 
+	console.log('contacts fetch data here');
+	return (dispatch) => {
+		console.log('wtf');
+		dispatch(contactsIsLoading(true));
+		console.log('hehrehrhehre');
 		fetch(url)
 			.then((response) => {
+				console.log('then here');
 				if (!response.ok) {
 					throw new Error(response.statusText);
 				}
 				dispatch(contactsIsLoading(false));
+				console.log('then here 2');
 				return response;
 			})
 			.then(response => {
+				console.log('then then here');
 				console.log(response);
-				response.json();
+				return response.json();
 			})
 			.then(contacts => {
+				console.log('then then then here');
 				console.log(contacts);
-				dispatch(contactsFetchDataSuccess(contacts))
+				return dispatch(contactsFetchDataSuccess(contacts))
 			});
 	}
 };
