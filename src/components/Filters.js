@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-const Filters = () => (
-	return {
+const Filters = () => {
+	return (
 		<p>
 			Show:
 			{" "}
@@ -15,7 +15,7 @@ const Filters = () => (
 				Selected
 			</Filter>
 		</p>
-	}
-);
+	);
+};
 
 export default Filters;

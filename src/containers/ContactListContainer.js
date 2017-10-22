@@ -17,21 +17,13 @@ const getVisibleContacts = (contacts, filter) => {
 	}
 };
 
-// ContactListContainer.propTypes = {
-	
-// }
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
 	contacts: getVisibleContacts(state.contacts, state.filter),
 	isLoading: state.contactsIsLoading
 });
 
-// const mapDispatchToProps = ({
-// 	onContactClick: toggleContact
-// })
-
-const mapDispatchToProps = (dispatch) => ({
-	onContactClick: toggleContact,
+const mapDispatchToProps = dispatch => ({
+	onContactClick: (id) => dispatch(toggleContact(id)),
 	fetchData: (url) => dispatch(contactsFetchData(url))
 });
 

@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+// jshint esversion: 6
 
 // import fetch from 'isomorphic-fetch';
 
@@ -8,6 +8,11 @@ const CONTACT_IS_CREATING = 'CONTACT_IS_CREATING';
 const ADD_CONTACT = 'ADD_CONTACT';
 const TOGGLE_CONTACT = 'TOGGLE_CONTACT';
 const SET_FILTER = 'SET_FILTER';
+const NEW_CONTACT_SET_GENDER = 'NEW_CONTACT_SET_GENDER';
+const NEW_CONTACT_SET_FIRST_NAME = 'NEW_CONTACT_SET_FIRST_NAME';
+const NEW_CONTACT_SET_LAST_NAME = 'NEW_CONTACT_SET_LAST_NAME';
+const NEW_CONTACT_SET_PHONE = 'NEW_CONTACT_SET_PHONE';
+const NEW_CONTACT_SET_EMAIL = 'NEW_CONTACT_SET_EMAIL';
 
 export const contactsIsLoading = (bool) => ({
 	type: CONTACTS_IS_LOADING,
@@ -16,34 +21,27 @@ export const contactsIsLoading = (bool) => ({
 
 export const contactsFetchDataSuccess = (contacts) => ({
 	type: CONTACTS_FETCH_DATA_SUCCESS,
-	contacts
+	contacts: contacts.map(contact => ({
+		...contact, // maybe switch underscores to camel case? 
+		selected: false
+	}))
 });
 
 export const contactsFetchData = (url) => {
-
-	console.log('contacts fetch data here');
-	return (dispatch) => {
-		console.log('wtf');
+	return dispatch => {
 		dispatch(contactsIsLoading(true));
-		console.log('hehrehrhehre');
 		fetch(url)
 			.then((response) => {
-				console.log('then here');
 				if (!response.ok) {
 					throw new Error(response.statusText);
 				}
 				dispatch(contactsIsLoading(false));
-				console.log('then here 2');
 				return response;
 			})
 			.then(response => {
-				console.log('then then here');
-				console.log(response);
-				return response.json();
+				return response.json(); // returns a promise 
 			})
 			.then(contacts => {
-				console.log('then then then here');
-				console.log(contacts);
 				return dispatch(contactsFetchDataSuccess(contacts));
 			});
 	};
@@ -53,6 +51,31 @@ export const contactIsCreating = (bool) => ({
 	type: CONTACT_IS_CREATING,
 	isCreating: bool
 });
+
+export const newContactSetGender = (gender) => ({
+	type: NEW_CONTACT_SET_GENDER,
+	gender
+});
+
+export const newContactSetFirstName = (first) => ({
+	type: NEW_CONTACT_SET_FIRST_NAME,
+	first
+});
+
+export const newContactSetLastName = (last) => ({
+	type: NEW_CONTACT_SET_LAST_NAME,
+	last
+});
+
+export const newContactSetPhone = (phone) => ({
+	type: NEW_CONTACT_SET_PHONE,
+	phone
+});
+
+export const newContactSetEmail = (email) => ({
+	type: NEW_CONTACT_SET_EMAIL,
+	email
+})
 
 export const addContact = (contact) => ({
 	type: ADD_CONTACT,
@@ -68,18 +91,3 @@ export const setFilter = (filter) => ({
 	type: SET_FILTER,
 	filter
 });
-
-// function(next) {
-// 	return function(action) {
-// 		console.log('will dispatch', action)
-
-// 		// Call the next dispatch method in the middleware chain.
-// 		let returnValue = next(action)
-
-// 		console.log('state after dispatch', getState())
-
-// 		// This will likely be the action itself, unless
-// 		// a middleware further in chain changed it.
-// 		return returnValue
-// 	}
-// }
