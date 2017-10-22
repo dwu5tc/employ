@@ -1,7 +1,9 @@
+/*jshint esversion: 6*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { contactsFetchData, toggleContact } from '../actions'
+import { contactsFetchData, toggleContact } from '../actions';
 import ContactList from '../components/ContactList';
 
 const getVisibleContacts = (contacts, filter) => {
@@ -13,7 +15,7 @@ const getVisibleContacts = (contacts, filter) => {
 		default:
 			throw new Error('Unknown filter: ' + filter);
 	}
-}
+};
 
 // ContactListContainer.propTypes = {
 	

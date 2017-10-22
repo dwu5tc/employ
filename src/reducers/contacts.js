@@ -1,3 +1,5 @@
+// jshint esversion: 6
+
 export const contacts = (state = [], action) => {
 	switch (action.type) {
 		case 'CONTACTS_FETCH_DATA_SUCCESS':
@@ -11,7 +13,7 @@ export const contacts = (state = [], action) => {
 				gender: action.gender,
 				phone: action.phone,
 				selected: false
-			}]
+			}];
 		case 'TOGGLE_CONTACT':
 			return state.map(contact => {
 				if (contact.id !== action.id) {

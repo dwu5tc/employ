@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+// jshint ignore: start
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'

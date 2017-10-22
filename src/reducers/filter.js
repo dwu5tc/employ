@@ -1,3 +1,5 @@
+// jshint esversion: 6
+
 const filter = (state = 'SHOW_ALL', action) => {
 	switch (action.type) {
 		case 'SET_FILTER':

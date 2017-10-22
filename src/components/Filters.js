@@ -1,17 +1,21 @@
+// jshint esversion: 6
+
 import React from 'react';
 
 const Filters = () => (
-	<p>
-		Show:
-		{" "}
-		<Filter filter="SHOW_ALL">
-			All
-		</Filter>
-		{", "}
-		<Filter filter="SHOW_SELECTED">
-			Selected
-		</Filter>
-	</p>
-)
+	return {
+		<p>
+			Show:
+			{" "}
+			<Filter filter="SHOW_ALL">
+				All
+			</Filter>
+			{", "}
+			<Filter filter="SHOW_SELECTED">
+				Selected
+			</Filter>
+		</p>
+	}
+);
 
 export default Filters;

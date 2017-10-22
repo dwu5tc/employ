@@ -1,6 +1,8 @@
+// jshint esversion: 6
+
 import React, { Component } from 'react';
 // import { contactsFetchData } from '../actions';
-import Contact from './Contact'
+import Contact from './Contact';
 import PropTypes from 'prop-types';
 
 export default class ContactList extends Component {
