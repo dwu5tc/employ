@@ -75,11 +75,14 @@ export const newContactSetPhone = (phone) => ({
 export const newContactSetEmail = (email) => ({
 	type: NEW_CONTACT_SET_EMAIL,
 	email
-})
+});
 
 export const addContact = (contact) => ({
 	type: ADD_CONTACT,
-	contact
+	contact: {
+		...contact,
+		selected: false
+	}
 });
 
 export const toggleContact = (id) => ({

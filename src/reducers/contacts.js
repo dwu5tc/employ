@@ -5,27 +5,12 @@ export const contacts = (state = [], action) => {
 		case 'CONTACTS_FETCH_DATA_SUCCESS':
 			return action.contacts;
 		case 'ADD_CONTACT':
-			return [...state, {
-				id: action.id,
-				first_name: action.firstName, // underscores for sake of consistency with fetched data
-				last_name: action.lastName,
-				email: action.email,
-				gender: action.gender,
-				phone: action.phone,
-				selected: false
-			}];
+			return [...state, action.contact];
 		case 'TOGGLE_CONTACT':
-			console.log("toggling", action.id);
 			return state.map(contact => {
 				if (contact.id !== action.id) {
 					return contact;
 				}
-				console.log('found', contact.id, contact.selected, !contact.selected);
-				var temp = ({
-					...contact,
-					selected: !contact.selected
-				});
-				console.log(temp);
 				return ({
 					...contact,
 					selected: !contact.selected
@@ -47,19 +32,35 @@ export const contactsIsLoading = (state = false, action) => {
 
 export const newContact = (state = {}, action) => {
 	switch (action.type) {
-		case: 'NEW_CONTACT_SET_GENDER':
-			return
-		case: 'NEW_CONTACT_SET_FIRST_NAME':
-			return 
-		case: 'NEW_CONTACT_SET_LAST_NAME':
-			return 
-		case: 'NEW_CONTACT_SET_':
-			return 
-		case: 'NEW_CONTACT_SET_GENDER':
-			return  
+		case 'NEW_CONTACT_SET_GENDER':
+			return ({
+				...state,
+				gender: action.gender 
+			});
+		case 'NEW_CONTACT_SET_FIRST_NAME':
+			return ({
+				...state,
+				first_name: action.first_name
+			});
+		case 'NEW_CONTACT_SET_LAST_NAME':
+			return ({
+				...state,
+				last_name: action.last_name
+			});
+		case 'NEW_CONTACT_SET_PHONE':
+			return ({
+				...state,
+				phone: action.phone
+			});
+		case 'NEW_CONTACT_SET_EMAIL':
+			return ({
+				...state,
+				email: action.email
+			});
+		default:
+			return state;
 	}
-	return state;
-}
+};
 
 
 
