@@ -1,7 +1,6 @@
 // jshint esversion: 6
 
 import React, { Component } from 'react';
-// import { contactsFetchData } from '../actions';
 import Contact from './Contact';
 import PropTypes from 'prop-types';
 
@@ -20,7 +19,7 @@ export default class ContactList extends Component {
 					<Contact
 						key={contact.id}
 						{...contact}
-						onClick={() => this.props.onContactClick(contact.id)}
+						onClick={() => this.props.handleContactClick(contact.id)}
 					/>
 				)}
 				</ul>
@@ -40,6 +39,6 @@ ContactList.propTypes = {
 	}).isRequired).isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	fetchData: PropTypes.func.isRequired,
-	onContactClick: PropTypes.func.isRequired
+	handleContactClick: PropTypes.func.isRequired
 }
 

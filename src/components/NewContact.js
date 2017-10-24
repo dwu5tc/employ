@@ -1,8 +1,6 @@
 /*jshint esversion: 6*/
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { contactsFetchData } from '../actions/contacts';
 import PropTypes from 'prop-types';
 
 export default class ContactList extends Component {
@@ -19,19 +17,20 @@ export default class ContactList extends Component {
 			...this.state.contact,
 			[prop]: e.target.value
 		};
-		this.setState{
+		this.setState({ 
 			contact: temp
-		};
+		});
 	}
 
 	render() {
 		return (
 			<form className='new-contact'
-				onSubmit={this.props.handleSubmit}>
+				onSubmit={this.props.handleNewContactSubmit}>
 				<label>
 				First Name
 					<input type='text'
-						onChange={this.handleChange('first_name')}
+						onBlur={this.props.handleNewContactBlur}
+						onChange={this.handleChange(this, 'first_name')}
 						name='first_name'
 						value={this.state.first_name}
 					/>
@@ -81,8 +80,8 @@ export default class ContactList extends Component {
 }
 
 ContactList.propTypes = {
-	handleSubmit: PropTypes.func.isRequired,
-	handleBlur: PropTypes.func.isRequired,
+	handleNewContactSubmit: PropTypes.func.isRequired,
+	handleNewContactBlur: PropTypes.func.isRequired,
 	handleGender: PropTypes.func.isRequired,
 }
 

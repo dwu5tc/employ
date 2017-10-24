@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onContactClick: (id) => dispatch(toggleContact(id)),
+	handleContactClick: (id) => dispatch(toggleContact(id)),
 	fetchData: (url) => dispatch(contactsFetchData(url))
 });
 
