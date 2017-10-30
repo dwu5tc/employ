@@ -20,8 +20,12 @@ export default class NewContact extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (this.props.isLoading === 'false') {
-			console.log('RECEIVED PROPS', this.props.contacts, this.props.contacts.length);
+		setTimeout(() => {
+			console.log('after 0.002 second', this.props.contacts);
+		}, 2);
+		console.log('RECEIVED PROPS', this.props);
+		if (this.props.isLoading === false) {
+			console.log('RECEIVED PROPS NOT LOADING ANYMORE', this.props.contacts, this.props.contacts.length);
 		}
 	}
 
@@ -38,7 +42,8 @@ export default class NewContact extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		console.log('submitting');
-		this.props.handleNewContactSubmit();
+		console.log(this.props.newContact);
+		this.props.handleNewContactSubmit(this.props.newContact);
 	}
 
 	render() {

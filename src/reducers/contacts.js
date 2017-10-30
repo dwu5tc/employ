@@ -6,7 +6,6 @@ export const contacts = (state = [], action) => {
 			return action.contacts;
 		case 'ADD_CONTACT':
 			return [...state, {
-					// somehow grab the newContact reducer stuff
 					...action.contact,
 					id: state.length + 1
 				}];
@@ -46,6 +45,8 @@ export const newContact = (state = {}, action) => {
 				...state,
 				gender: action.gender 
 			});
+		case 'ADD_CONTACT':
+			return ({});
 		default:
 			return state;
 	}
