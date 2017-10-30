@@ -5,7 +5,11 @@ export const contacts = (state = [], action) => {
 		case 'CONTACTS_FETCH_DATA_SUCCESS':
 			return action.contacts;
 		case 'ADD_CONTACT':
-			return [...state, action.contact];
+			return [...state, {
+					// somehow grab the newContact reducer stuff
+					...action.contact,
+					id: state.length + 1
+				}];
 		case 'TOGGLE_CONTACT':
 			return state.map(contact => {
 				if (contact.id !== action.id) {
@@ -21,7 +25,7 @@ export const contacts = (state = [], action) => {
 	}
 };
 
-export const contactsIsLoading = (state = false, action) => {
+export const contactsIsLoading = (state = true, action) => {
 	switch (action.type) {
 		case 'CONTACTS_IS_LOADING':
 			return action.isLoading;
@@ -32,30 +36,15 @@ export const contactsIsLoading = (state = false, action) => {
 
 export const newContact = (state = {}, action) => {
 	switch (action.type) {
+		case 'NEW_CONTACT_SET_ON_BLUR':
+			return ({
+				...state,
+				...action.contact
+			});
 		case 'NEW_CONTACT_SET_GENDER':
 			return ({
 				...state,
 				gender: action.gender 
-			});
-		case 'NEW_CONTACT_SET_FIRST_NAME':
-			return ({
-				...state,
-				first_name: action.first_name
-			});
-		case 'NEW_CONTACT_SET_LAST_NAME':
-			return ({
-				...state,
-				last_name: action.last_name
-			});
-		case 'NEW_CONTACT_SET_PHONE':
-			return ({
-				...state,
-				phone: action.phone
-			});
-		case 'NEW_CONTACT_SET_EMAIL':
-			return ({
-				...state,
-				email: action.email
 			});
 		default:
 			return state;

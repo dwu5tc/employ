@@ -3,13 +3,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class ContactList extends Component {
+export default class NewContact extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			contact: {}
+			contact: {
+				first_name: '',
+				last_name: '',
+				phone: '',
+				email: ''
+			}
 		};
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		console.log('CONSTRUCTOR PROPS', this.props.contacts, this.props.contacts.length);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (this.props.isLoading === 'false') {
+			console.log('RECEIVED PROPS', this.props.contacts, this.props.contacts.length);
+		}
 	}
 
 	handleChange(prop, e) {
@@ -22,55 +35,69 @@ export default class ContactList extends Component {
 		});
 	}
 
+	handleSubmit(e) {
+		e.preventDefault();
+		console.log('submitting');
+		this.props.handleNewContactSubmit();
+	}
+
 	render() {
 		return (
 			<form className='new-contact'
-				onSubmit={this.props.handleNewContactSubmit}>
+				onSubmit={this.handleSubmit}>
 				<label>
 				First Name
 					<input type='text'
-						onBlur={this.props.handleNewContactBlur}
-						onChange={this.handleChange(this, 'first_name')}
+						onBlur={this.props.handleNewContactBlur.bind(this, this.state.contact)}
+						onChange={this.handleChange.bind(this, 'first_name')}
 						name='first_name'
-						value={this.state.first_name}
+						value={this.state.contact.first_name}
 					/>
 				</label>
 				<label>
 				Last Name
 					<input type='text'
-						onChange={this.handleChange('last_name')}
+						onBlur={this.props.handleNewContactBlur.bind(this, this.state.contact)}
+						onChange={this.handleChange.bind(this, 'last_name')}
 						name='last_name'
-						value={this.state.last_name}
+						value={this.state.contact.last_name}
 					/>
 				</label>
 				<label>
-				<label>
 				Gender
+					<label>
+					Male
 					<input type="radio"
-						onClick={this.props.handleGender}
+						onClick={this.props.handleGenderSelect.bind(this, 'male')}
 						name='gender_male'
-						value={this.props.gender === 'male'}
-
+						checked={this.props.newContact.gender === 'male'}
 					/>
+					</label>
+					<label>
+					Female
 					<input type='radio'
-						onClick={this.props.handleGender}
+						onClick={this.props.handleGenderSelect.bind(this, 'female')}
 						name='gender_female'
-						value={this.props.gender === 'female'}
+						checked={this.props.newContact.gender === 'female'}
 					/>
+					</label>
 				</label>
 				<label>
 				Phone
 					<input type='text'
-						onChange={this.handleChange('phone')}
+						onBlur={this.props.handleNewContactBlur.bind(this, this.state.contact)}
+						onChange={this.handleChange.bind(this, 'phone')}
 						name='phone'
-						value={this.state.phone}
+						value={this.state.contact.phone}
 					/>
 				</label>
+				<label>
 				Email:
 					<input type='text'
-						onChange={this.handleChange('email')}
+						onBlur={this.props.handleNewContactBlur.bind(this, this.state.contact)}
+						onChange={this.handleChange.bind(this, 'email')}
 						name='email'
-						value={this.state.email}
+						value={this.state.contact.email}
 					/>
 				</label>
 				<input type='submit' value='Add Contact' />
@@ -79,9 +106,9 @@ export default class ContactList extends Component {
 	}
 }
 
-ContactList.propTypes = {
-	handleNewContactSubmit: PropTypes.func.isRequired,
+NewContact.propTypes = {
 	handleNewContactBlur: PropTypes.func.isRequired,
-	handleGender: PropTypes.func.isRequired,
+	handleGenderSelect: PropTypes.func.isRequired,
+	handleNewContactSubmit: PropTypes.func.isRequired
 }
 
