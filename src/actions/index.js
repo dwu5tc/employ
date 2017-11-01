@@ -6,14 +6,12 @@ const CONTACTS_IS_LOADING = 'CONTACTS_IS_LOADING';
 const CONTACTS_FETCH_DATA_SUCCESS = 'CONTACTS_FETCH_DATA_SUCCESS';
 const CONTACT_IS_CREATING = 'CONTACT_IS_CREATING';
 const ADD_CONTACT = 'ADD_CONTACT';
+const ADD_CONTACT_ERROR = 'ADD_CONTACT_ERROR';
+const ADD_CONTACT_SUCCESS = 'ADD_CONTACT_SUCCESS';
 const TOGGLE_CONTACT = 'TOGGLE_CONTACT';
 const SET_FILTER = 'SET_FILTER';
 const NEW_CONTACT_SET_ON_BLUR = 'NEW_CONTACT_SET_ON_BLUR';
 const NEW_CONTACT_SET_GENDER = 'NEW_CONTACT_SET_GENDER';
-// const NEW_CONTACT_SET_FIRST_NAME = 'NEW_CONTACT_SET_FIRST_NAME';
-// const NEW_CONTACT_SET_LAST_NAME = 'NEW_CONTACT_SET_LAST_NAME';
-// const NEW_CONTACT_SET_PHONE = 'NEW_CONTACT_SET_PHONE';
-// const NEW_CONTACT_SET_EMAIL = 'NEW_CONTACT_SET_EMAIL';
 
 export const contactsIsLoading = (bool) => ({
 	type: CONTACTS_IS_LOADING,
@@ -48,13 +46,6 @@ export const contactsFetchData = (url) => {
 	};
 };
 
-// export const newContactSetField = (field) => ({
-// 	return dispatch => {
-// 		switch (field):
-// 			case ''
-// 	}
-// })
-
 export const contactIsCreating = (bool) => ({
 	type: CONTACT_IS_CREATING,
 	isCreating: bool
@@ -70,32 +61,24 @@ export const newContactSetGender = (gender) => ({
 	gender
 });
 
-// export const newContactSetFirstName = (first) => ({
-// 	type: NEW_CONTACT_SET_FIRST_NAME,
-// 	first
-// });
+export const addContactError = (error) => ({
+	type: ADD_CONTACT_ERROR,
+	error
+})
 
-// export const newContactSetLastName = (last) => ({
-// 	type: NEW_CONTACT_SET_LAST_NAME,
-// 	last
-// });
-
-// export const newContactSetPhone = (phone) => ({
-// 	type: NEW_CONTACT_SET_PHONE,
-// 	phone
-// });
-
-// export const newContactSetEmail = (email) => ({
-// 	type: NEW_CONTACT_SET_EMAIL,
-// 	email
-// });
-
-export const addContact = (contact) => ({
+export const addContactSuccess = (contact) => ({
 	type: ADD_CONTACT,
 	contact: {
 		...contact,
 		selected: false
 	}
+})
+
+export const addContact = (contact) => ({
+	return dispatch => {
+
+	}
+	
 });
 
 export const toggleContact = (id) => ({

@@ -33,6 +33,15 @@ export const contactsIsLoading = (state = true, action) => {
 	}
 };
 
+export const contactIsCreating = (state = false, action) => {
+	switch (action.type) {
+		case 'CONTACT_IS_CREATING':
+			return action.isCreating;
+		default:
+			return state;
+	}
+};
+
 export const newContact = (state = {}, action) => {
 	switch (action.type) {
 		case 'NEW_CONTACT_SET_ON_BLUR':
@@ -45,8 +54,8 @@ export const newContact = (state = {}, action) => {
 				...state,
 				gender: action.gender 
 			});
-		case 'ADD_CONTACT':
-			return ({});
+		// case 'ADD_CONTACT':
+		// 	return ({});
 		default:
 			return state;
 	}

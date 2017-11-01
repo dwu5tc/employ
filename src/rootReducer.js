@@ -1,12 +1,16 @@
 // jshint esversion: 6
 
-import { contacts, contactsIsLoading, newContact } from './reducers/contacts';
+import { contacts, 
+	contactsIsLoading, 
+	contactIsCreating, 
+	newContact } from './reducers/contacts';
 import filter from './reducers/filter';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({ 
 	contacts, 
-	contactsIsLoading, 
+	contactsIsLoading,
+	contactIsCreating, 
 	newContact, 
 	filter 
 });

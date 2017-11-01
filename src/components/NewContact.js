@@ -16,17 +16,6 @@ export default class NewContact extends Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		console.log('CONSTRUCTOR PROPS', this.props.contacts, this.props.contacts.length);
-	}
-
-	componentWillReceiveProps(nextProps) {
-		setTimeout(() => {
-			console.log('after 0.002 second', this.props.contacts);
-		}, 2);
-		console.log('RECEIVED PROPS', this.props);
-		if (this.props.isLoading === false) {
-			console.log('RECEIVED PROPS NOT LOADING ANYMORE', this.props.contacts, this.props.contacts.length);
-		}
 	}
 
 	handleChange(prop, e) {
@@ -41,15 +30,23 @@ export default class NewContact extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log('submitting');
-		console.log(this.props.newContact);
-		this.props.handleNewContactSubmit(this.props.newContact);
+		this.props.handleNewContactSubmit(this.props.newContact); // or maybe just submit with the react state contact???
+		this.setState({
+			contact: {
+				first_name: '',
+				last_name: '',
+				phone: '',
+				email: ''
+			}
+		});
 	}
 
 	render() {
 		return (
 			<form className='new-contact'
 				onSubmit={this.handleSubmit}>
+				{//this.props.errorMessage}
+				}
 				<label>
 				First Name
 					<input type='text'
@@ -112,6 +109,7 @@ export default class NewContact extends Component {
 }
 
 NewContact.propTypes = {
+	newContact: PropTypes.object.isRequired,
 	handleNewContactBlur: PropTypes.func.isRequired,
 	handleGenderSelect: PropTypes.func.isRequired,
 	handleNewContactSubmit: PropTypes.func.isRequired

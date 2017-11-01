@@ -1,7 +1,5 @@
 /*jshint esversion: 6*/
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { contactsFetchData, toggleContact } from '../actions';
 import ContactList from '../components/ContactList';

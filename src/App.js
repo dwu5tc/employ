@@ -3,19 +3,32 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 import NewContactContainer from './containers/NewContactContainer';
 import ContactListContainer from './containers/ContactListContainer';
-import Filter from './components/Filter';
+// import FilterContainer from './containers/FilterContainer';
 
-export default class App extends Component {
+class App extends Component {
 	render() {
 		return (
 			<div className="App">
+
 				<NewContactContainer />
 				<ContactListContainer />
-				{/* <Filter /> */}
-				{/* <h2>hello from app.js</h2> */}
+				{// <Filter /> }
+				}
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	isCreating: state.isCreating,
+	newContact: state.newContact,
+});
+
+// const mapDispatchToProps = dispatch => ({
+	
+// });
+
+export default App = connect(mapStateToProps/*, mapDispatchToProps*/)(App);

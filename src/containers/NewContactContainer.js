@@ -1,15 +1,11 @@
 /*jshint esversion: 6*/
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { newContactSetGender, newContactSetOnBlur, addContact } from '../actions';
 import NewContact from '../components/NewContact';
 
 const mapStateToProps = state => ({
-	contacts: state.contacts,
 	newContact: state.newContact,
-	isLoading: state.contactsIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({
